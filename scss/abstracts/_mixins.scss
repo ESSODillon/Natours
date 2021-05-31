@@ -12,3 +12,57 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+// Media Query Manager
+
+/*
+
+0 - 600px: Phone
+600 - 900px: Tablet portrait
+900 - 1200px: Tablet landscape
+[1200 - 1800] is where our normal desktop styles apply
+1800px + : Big desktop
+
+$breakpoint argument choices:
+
+- phone
+- tablet portrait
+- tablet landscape
+- big desktop
+
+Order of responsive design: 
+1. Base + typography
+2. General layout + grid
+3. Page layout + components 
+
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    // 600px
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet-portrait {
+    // 900px
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet-landscape {
+    // 1200px
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == big-desktop {
+    // 1800px
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
