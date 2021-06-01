@@ -10,8 +10,14 @@
   visibility: hidden;
   transition: all 0.3s;
 
-  // This appears when the popup id has been clicked
+  @supports (-webkit-backdrop-filter: blur(10px)) or
+    (backdrop-filter: blur(10px)) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba($color-black, 0.3);
+  }
 
+  // This appears when the popup id has been clicked
   &__content {
     @include absoluteCenter;
     width: 75%;
